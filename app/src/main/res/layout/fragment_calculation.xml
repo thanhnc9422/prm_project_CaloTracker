@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Trường nhập liệu cho Tuổi -->
+        <EditText
+            android:id="@+id/edtAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Age"
+            android:inputType="number"
+            android:padding="8dp"/>
+        <RadioGroup
+            android:id="@+id/radioGroupGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <RadioButton
+                android:id="@+id/radioMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male" />
+
+            <RadioButton
+                android:id="@+id/radioFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female"/>
+        </RadioGroup>
+
+        <!-- Trường nhập liệu cho Chiều cao -->
+        <EditText
+            android:id="@+id/edtHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Height (cm)"
+            android:inputType="numberDecimal"
+            android:padding="8dp"/>
+
+        <!-- Trường nhập liệu cho Cân nặng -->
+        <EditText
+            android:id="@+id/edtWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Weight (kg)"
+            android:inputType="numberDecimal"
+            android:padding="8dp"/>
+
+        <!-- Spinner cho tần suất tập thể dục -->
+        <Spinner
+            android:id="@+id/spinnerExerciseFrequency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Nút tính toán -->
+        <Button
+            android:id="@+id/btnCalculate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:textColor="#FFFFFF"
+            android:text="Calculate"/>
+
+        <!-- Hiển thị kết quả ở đây nếu cần -->
+        <TextView
+            android:id="@+id/tvBMIResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            />
+
+
+        <View
+            android:id="@+id/vWeightLoss"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:visibility="gone"
+            android:background="#000000" />
+
+
+
+
+        <TableLayout
+            android:id="@+id/tbLoss"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:stretchColumns="*">
+            <TableRow>
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Weight loss per week" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Calories needed per week" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/kgBlLoss"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Maintain weight" />
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/clBlLoss"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </TableRow>
+            <!-- Dòng 1 -->
+            <TableRow>
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/kgLoss025"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.25 kg/week" />
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/clLoss025"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </TableRow>
+
+            <!-- Dòng 2 -->
+            <TableRow>
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/kgLoss050"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.5 kg/week" />
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/clLoss050"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </TableRow>
+
+            <!-- Dòng 3 -->
+            <TableRow>
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/kgULoss100"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1 kg/week" />
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/clLoss100"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </TableRow>
+        </TableLayout>
+
+
+
+
+        <View
+            android:id="@+id/vWeightGain"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:visibility="gone"
+            android:background="#000000"
+            android:layout_marginTop="8dp"
+            />
+
+<!--        -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+        <TableLayout
+            android:id="@+id/tbUp"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:stretchColumns="*"
+            android:layout_marginBottom="16dp">
+            <TableRow>
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Weight gain per week" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Calories needed per week" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/kgBl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Maintain weight" />
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/clBl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </TableRow>
+            <!-- Dòng 1 -->
+            <TableRow>
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/kgUp025"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.25 kg/week" />
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/clUp025"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                  />
+            </TableRow>
+
+            <!-- Dòng 2 -->
+            <TableRow>
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/kgUp050"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.5 kg/week" />
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/clUp050"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   />
+            </TableRow>
+
+            <!-- Dòng 3 -->
+            <TableRow>
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/kgUp100"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1 kg/week" />
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/clUp100"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </TableRow>
+        </TableLayout>
+        <TableLayout
+            android:id="@+id/yourChoice"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:stretchColumns="*"
+            android:layout_marginBottom="16dp">
+        <TableRow>
+
+        </TableRow>
+            <TableRow>
+                <Spinner
+                    android:id="@+id/spinnerGainOrLoss"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"/>
+
+                <Spinner
+                    android:id="@+id/spinnerMany"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"/>
+            </TableRow>
+        </TableLayout>
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lưu Thông Tin"
+            android:visibility="gone"
+            android:background="@drawable/rounded_button"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+</RelativeLayout>

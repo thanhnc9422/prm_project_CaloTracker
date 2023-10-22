@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    >
+    <!-- Hiển thị tiêu đề -->
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calories Today"
+        android:textSize="24sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <!-- Hiển thị lượng calo đã nạp -->
+    <TextView
+        android:id="@+id/textViewCaloriesConsumed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="48sp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="32dp" />
+
+    <!-- Nút để cập nhật lượng calo -->
+    <Button
+        android:id="@+id/buttonUpdateCalories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewCaloriesConsumed"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_button"
+        android:textColor="#FFFFFF"
+        android:text="Update Calories" />
+</RelativeLayout>
