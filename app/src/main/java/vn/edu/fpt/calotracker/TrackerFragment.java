@@ -1,16 +1,24 @@
 package vn.edu.fpt.calotracker;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Debug;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 public class TrackerFragment extends Fragment {
     private Button btnUpdateCl;
+    private SharedPreferences sharedPreferences;
+    private TextView TexViewTargetCalo;
+    private TextView textViewCaloriesConsumed;
     public TrackerFragment() {
         // Constructor mặc định, bạn có thể để trống hoặc thêm các tham số tùy ý.
     }
@@ -19,9 +27,20 @@ public class TrackerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.activity_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_tracker, container, false);
              btnUpdateCl = view.findViewById(R.id.buttonUpdateCalories);
-       btnUpdateCl.setOnClickListener(new View.OnClickListener() {
+        TexViewTargetCalo = view.findViewById(R.id.TexViewTargetCalo);
+        textViewCaloriesConsumed = view.findViewById(R.id.textViewCaloriesConsumed);
+        sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        float valueCalo = sharedPreferences.getFloat("targetCalo", 0);
+        float valueKg = sharedPreferences.getFloat("targetKg", 0);
+
+        TexViewTargetCalo.setText("target "+valueKg+" kg/weeks");
+        textViewCaloriesConsumed.setText("0/"+valueCalo+" calo");
+
+
+
+        btnUpdateCl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), MainActivity.class);

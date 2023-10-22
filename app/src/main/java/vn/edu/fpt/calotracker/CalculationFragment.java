@@ -113,30 +113,36 @@ public class CalculationFragment extends Fragment {
                 sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
 
-                if(spinnerGainOrLoss.equals("Weight loss")) {
+                if(spinnerGainOrLoss.getSelectedItem().toString().equals("Weight loss")) {
                     if(spinnerMany.getSelectedItem().toString().equals("0.25 (kg)")){
-                      editor.putFloat("targetCaloLoss",caloPerOption("Loss", "0.25"));
+                      editor.putFloat("targetCalo",caloPerOption("Loss", "0.25"));
+                        editor.putFloat("targetKg",-0.25f);
                         editor.apply();
                     }
                     if(spinnerMany.getSelectedItem().toString().equals("0.05 (kg)")){
-                        editor.putFloat("targetCaloLoss",caloPerOption("Loss", "0.50"));
+                        editor.putFloat("targetCalo",caloPerOption("Loss", "0.50"));
+                        editor.putFloat("targetKg",-0.50f);
                         editor.apply();
                     }
                     if(spinnerMany.getSelectedItem().toString().equals("1 (kg)")){
-                        editor.putFloat("targetCaloLoss",caloPerOption("Loss", "1.00"));
+                        editor.putFloat("targetCalo",caloPerOption("Loss", "1.00"));
+                        editor.putFloat("targetKg",-1.00f);
                         editor.apply();
                     }
-                }else if(spinnerGainOrLoss.equals("Weight gain")){
+                }else if(spinnerGainOrLoss.getSelectedItem().toString().equals("Weight gain")){
                     if(spinnerMany.getSelectedItem().toString().equals("0.25 (kg)")){
-                        editor.putFloat("targetCaloGain",caloPerOption("Gain", "0.25"));
+                        editor.putFloat("targetCalo",caloPerOption("Gain", "0.25"));
+                        editor.putFloat("targetKg",0.25f);
                         editor.apply();
                     }
                     if(spinnerMany.getSelectedItem().toString().equals("0.50 (kg)")){
-                        editor.putFloat("targetCaloGain",caloPerOption("Gain", "0.50"));
+                        editor.putFloat("targetCalo",caloPerOption("Gain", "0.50"));
+                        editor.putFloat("targetKg",0.50f);
                         editor.apply();
                     }
                     if(spinnerMany.getSelectedItem().toString().equals("1.00 (kg)")){
-                        editor.putFloat("targetCaloGain",caloPerOption("Gain", "1.00"));
+                        editor.putFloat("targetCalo",caloPerOption("Gain", "1.00"));
+                        editor.putFloat("targetKg",1.00f);
                         editor.apply();
                     }
                 }

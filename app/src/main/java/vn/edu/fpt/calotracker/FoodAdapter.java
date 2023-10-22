@@ -1,6 +1,7 @@
 package vn.edu.fpt.calotracker;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +62,12 @@ public class FoodAdapter extends BaseAdapter {
 
         Food food = foodList.get(position);
         viewHolder.textView.setText(food.getName());
-        viewHolder.itemCalo.setText(food.getCalo()+"");
+        viewHolder.itemCalo.setText(food.getCalo()+" kcal");
+        String imageNameFromSQLite = food.getName();
+        Resources resources = context.getResources();
+        final int resourceId = resources.getIdentifier(imageNameFromSQLite, "drawable",
+                context.getPackageName());
+        viewHolder.itemImage.setImageResource(resourceId);
         return convertView;
     }
 }

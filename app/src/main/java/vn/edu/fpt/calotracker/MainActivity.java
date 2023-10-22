@@ -32,12 +32,13 @@ public class MainActivity extends AppCompatActivity {
 //        myDatabaseHelper.QueryData("DROP TABLE Food");
 
         myDatabaseHelper.QueryData("CREATE TABLE IF NOT EXISTS Food(Id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(200), calo DECIMAL)");
-        myDatabaseHelper.QueryData("INSERT INTO Food VALUES (NULL , 'Meat', 242.1)");
-        myDatabaseHelper.QueryData("INSERT INTO Food VALUES (NULL , 'shrimp', 99.2)");
-        myDatabaseHelper.QueryData("INSERT INTO Food VALUES (NULL , 'Meat', 242.1)");
-        myDatabaseHelper.QueryData("INSERT INTO Food VALUES (NULL , 'shrimp', 99.2)");
-        myDatabaseHelper.QueryData("INSERT INTO Food VALUES (NULL , 'Meat', 242.1)");
-        myDatabaseHelper.QueryData("INSERT INTO Food VALUES (NULL , 'shrimp', 99.2)");
+//        myDatabaseHelper.QueryData("INSERT INTO Food VALUES (NULL , 'meat', 242.1)");
+//        myDatabaseHelper.QueryData("INSERT INTO Food VALUES (NULL , 'shrimp', 99.2)");
+//        myDatabaseHelper.QueryData("INSERT INTO Food VALUES (NULL , 'egg', 155.1)");
+//        myDatabaseHelper.QueryData("INSERT INTO Food VALUES (NULL , 'vegetable', 65.2)");
+//        myDatabaseHelper.QueryData("INSERT INTO Food VALUES (NULL , 'apple', 50)");
+//        myDatabaseHelper.QueryData("INSERT INTO Food VALUES (NULL , 'banana', 88.7)");
+//        myDatabaseHelper.QueryData("INSERT INTO Food VALUES (NULL , 'chicken', 239)");
         Cursor dataFood = myDatabaseHelper.GetData("select * from Food");
         while (dataFood.moveToNext()){
             int id =dataFood.getInt(0);
