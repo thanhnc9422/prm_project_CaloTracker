@@ -19,10 +19,23 @@ public class TrackerFragment extends Fragment {
     private SharedPreferences sharedPreferences;
     private TextView TexViewTargetCalo;
     private TextView textViewCaloriesConsumed;
+    private TextView textViewCaloriesCurrent;
     public TrackerFragment() {
         // Constructor mặc định, bạn có thể để trống hoặc thêm các tham số tùy ý.
     }
+    public void updateTextView(String newText) {
+        textViewCaloriesCurrent.setText(newText);
+    }
+    public void updateTrackerFragment() {
+        sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        float valueCalo = sharedPreferences.getFloat("targetCalo", 0);
+        float valueKg = sharedPreferences.getFloat("targetKg", 0);
+        float valueCurrentCalo = sharedPreferences.getFloat("currentCalo", 0);
 
+        TexViewTargetCalo.setText("target "+valueKg+" kg/weeks");
+        textViewCaloriesConsumed.setText(String.format("%.2f",valueCalo));
+        textViewCaloriesCurrent.setText(String.format("%.2f", valueCurrentCalo));
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -30,16 +43,9 @@ public class TrackerFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_tracker, container, false);
              btnUpdateCl = view.findViewById(R.id.buttonUpdateCalories);
         TexViewTargetCalo = view.findViewById(R.id.TexViewTargetCalo);
+        textViewCaloriesCurrent = view.findViewById(R.id.textViewCaloriesCurrent);
         textViewCaloriesConsumed = view.findViewById(R.id.textViewCaloriesConsumed);
-        sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        float valueCalo = sharedPreferences.getFloat("targetCalo", 0);
-        float valueKg = sharedPreferences.getFloat("targetKg", 0);
-
-        TexViewTargetCalo.setText("target "+valueKg+" kg/weeks");
-        textViewCaloriesConsumed.setText("0/"+valueCalo+" calo");
-
-
-
+        updateTrackerFragment();
         btnUpdateCl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

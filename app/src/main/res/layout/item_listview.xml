@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="16dp">
-
     <ImageView
         android:id="@+id/itemImage"
         android:layout_width="64dp"
@@ -13,6 +12,7 @@
         android:layout_centerVertical="true"
         android:src="@drawable/ic_launcher_foreground" />
     <LinearLayout
+        android:id="@+id/lnText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/itemImage"
@@ -32,6 +32,15 @@
         android:layout_height="wrap_content"
     android:text="Subtitle" />
     </LinearLayout>
-    <!-- Các phần tử khác của ListItem -->
+    <Button
+        android:id="@+id/btnDele"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:visibility="gone"
+       android:background="@drawable/baseline_delete_forever_24"
+   />
 
 </RelativeLayout>

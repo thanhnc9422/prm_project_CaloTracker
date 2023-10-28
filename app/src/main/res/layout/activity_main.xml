@@ -36,11 +36,26 @@
         android:layout_height="wrap_content"
         android:text="Add Food"
         android:layout_below="@+id/editTextCalories"
-        android:layout_centerHorizontal="true"
         android:background="@drawable/rounded_button"
         android:textColor="#FFFFFF"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"/>
-
+<!--    <Button-->
+<!--        android:id="@+id/buttonAddImg"-->
+<!--        android:layout_toRightOf="@id/buttonAddFood"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/editTextCalories"-->
+<!--        android:background="@drawable/baseline_camera_alt_24"-->
+<!--        android:layout_marginTop="16dp"/>-->
+  
+    <ImageView
+        android:id="@+id/showImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonAddImg"
+        android:visibility="gone"
+        />
     <ListView
         android:id="@+id/listViewFoods"
         android:layout_width="match_parent"

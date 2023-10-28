@@ -16,28 +16,52 @@
         android:layout_marginTop="16dp" />
 
     <!-- Hiển thị lượng calo đã nạp -->
+
     <TextView
-        android:id="@+id/textViewCaloriesConsumed"
+        android:id="@+id/TexViewCurrentCalo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/textViewCaloriesCurrent"
         android:layout_centerInParent="true"
-        android:textSize="48sp" />
-
+        android:layout_marginTop="32dp"
+        android:text="Current Calories"
+        android:textSize="24sp" />
     <TextView
         android:id="@+id/TexViewTargetCalo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textViewCaloriesConsumed"
+        android:layout_below="@+id/textViewCaloriesCurrent"
         android:layout_centerInParent="true"
-        android:layout_marginTop="32dp"
         android:textSize="24sp" />
-
+    <TextView
+        android:id="@+id/textViewCaloriesCurrent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="48sp" />
+    <TextView
+        android:id="@+id/textViewCaloriesConsumed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TexViewTargetCalo"
+        android:layout_centerInParent="true"
+        android:textColor="#6750A4"
+        android:textSize="48sp" />
+    <TextView
+        android:id="@+id/textViewCalo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calories"
+        android:textSize="24sp"
+        android:layout_below="@+id/textViewCaloriesConsumed"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
     <!-- Nút để cập nhật lượng calo -->
     <Button
         android:id="@+id/buttonUpdateCalories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewCaloriesConsumed"
+        android:layout_below="@+id/textViewCalo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_button"

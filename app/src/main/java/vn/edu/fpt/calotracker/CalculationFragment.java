@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.RadioGroup;
+import android.widget.Toast;
+
 import androidx.fragment.app.Fragment;
 
 import java.time.ZoneId;
@@ -115,43 +117,46 @@ public class CalculationFragment extends Fragment {
 
                 if(spinnerGainOrLoss.getSelectedItem().toString().equals("Weight loss")) {
                     if(spinnerMany.getSelectedItem().toString().equals("0.25 (kg)")){
-                      editor.putFloat("targetCalo",caloPerOption("Loss", "0.25"));
+                      editor.putFloat("targetCalo",caloPerOption("loss", "0.25"));
                         editor.putFloat("targetKg",-0.25f);
                         editor.apply();
                     }
-                    if(spinnerMany.getSelectedItem().toString().equals("0.05 (kg)")){
-                        editor.putFloat("targetCalo",caloPerOption("Loss", "0.50"));
+                    if(spinnerMany.getSelectedItem().toString().equals("0.50 (kg)")){
+                        editor.putFloat("targetCalo",caloPerOption("loss", "0.50"));
                         editor.putFloat("targetKg",-0.50f);
                         editor.apply();
                     }
-                    if(spinnerMany.getSelectedItem().toString().equals("1 (kg)")){
-                        editor.putFloat("targetCalo",caloPerOption("Loss", "1.00"));
+                    if(spinnerMany.getSelectedItem().toString().equals("1.00 (kg)")){
+                        editor.putFloat("targetCalo",caloPerOption("loss", "1.00"));
                         editor.putFloat("targetKg",-1.00f);
                         editor.apply();
                     }
                 }else if(spinnerGainOrLoss.getSelectedItem().toString().equals("Weight gain")){
                     if(spinnerMany.getSelectedItem().toString().equals("0.25 (kg)")){
-                        editor.putFloat("targetCalo",caloPerOption("Gain", "0.25"));
+                        editor.putFloat("targetCalo",caloPerOption("gain", "0.25"));
                         editor.putFloat("targetKg",0.25f);
                         editor.apply();
                     }
                     if(spinnerMany.getSelectedItem().toString().equals("0.50 (kg)")){
-                        editor.putFloat("targetCalo",caloPerOption("Gain", "0.50"));
+                        editor.putFloat("targetCalo",caloPerOption("gain", "0.50"));
                         editor.putFloat("targetKg",0.50f);
                         editor.apply();
                     }
                     if(spinnerMany.getSelectedItem().toString().equals("1.00 (kg)")){
-                        editor.putFloat("targetCalo",caloPerOption("Gain", "1.00"));
+                        editor.putFloat("targetCalo",caloPerOption("gain", "1.00"));
                         editor.putFloat("targetKg",1.00f);
                         editor.apply();
                     }
                 }
+                editor.putFloat("currentCalo", 0f);
+                editor.apply();
+                Toast.makeText(getContext(), "save successfully!", Toast.LENGTH_LONG).show();
             }
         });
         // Tạo mảng các tùy chọn cho Spinner
         String[] exerciseFrequencyOptions = {"ít hoặc không tập thể dục", "1-3 lần một tuần", "4-5 lần một tuần", "6-7 lần một tuần"};
         String[] GainOrLossOptions = {"Weight loss", "Weight gain"};
-        String[] ManyOptions = {"0.25 (kg)", "0.5 (kg)", "1.00 (kg)"};
+        String[] ManyOptions = {"0.25 (kg)", "0.50 (kg)", "1.00 (kg)"};
 
         // Tạo ArrayAdapter để hiển thị danh sách tùy chọn
         ArrayAdapter<String> adapterspinnerExerciseFrequency = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, exerciseFrequencyOptions);
