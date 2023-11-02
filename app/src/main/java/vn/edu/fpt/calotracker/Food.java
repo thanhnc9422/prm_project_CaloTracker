@@ -34,4 +34,13 @@ public class Food {
     public void setCalo(String img) {
         this.calo = calo;
     }
+
+    @Override
+    public String toString() {
+        return "Food{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", calo=" + calo +
+                '}';
+    }
 }

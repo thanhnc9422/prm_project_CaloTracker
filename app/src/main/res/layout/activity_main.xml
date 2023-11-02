@@ -49,13 +49,13 @@
 <!--        android:background="@drawable/baseline_camera_alt_24"-->
 <!--        android:layout_marginTop="16dp"/>-->
   
-    <ImageView
-        android:id="@+id/showImg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonAddImg"
-        android:visibility="gone"
-        />
+<!--    <ImageView-->
+<!--        android:id="@+id/showImg"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/buttonAddImg"-->
+<!--        android:visibility="gone"-->
+<!--        />-->
     <ListView
         android:id="@+id/listViewFoods"
         android:layout_width="match_parent"

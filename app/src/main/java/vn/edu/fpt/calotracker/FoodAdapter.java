@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Debug;
 import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,17 +20,20 @@ import java.io.File;
 import java.util.List;
 
 public class FoodAdapter extends BaseAdapter {
+    private MainActivity mainActivity;
+
     private MyDatabaseHelper myDatabaseHelper;
     private Context context;
     private int layout;
 
     private List<Food> foodList;
 
-    public FoodAdapter(Context context, int layout, List<Food> foodList) {
+    public FoodAdapter(Context context, int layout, List<Food> foodList, MainActivity mainActivity) {
         this.context = context;
         this.layout = layout;
         this.foodList = foodList;
         myDatabaseHelper = new MyDatabaseHelper(context, "Foods.sqlite", null, 1);
+        this.mainActivity = mainActivity;
     }
     public interface OnDeleteClickListener {
         void onDeleteClick();
@@ -81,22 +85,26 @@ public class FoodAdapter extends BaseAdapter {
             final int resourceId = resources.getIdentifier(imageNameFromSQLite, "drawable",
                     context.getPackageName());
             viewHolder.itemImage.setImageResource(resourceId);
+            viewHolder.btnDele.setVisibility(View.GONE);
         }else{
+            Log.i("displaybtn",food.getName());
             viewHolder.textView.setText(food.getName().substring(4));
 //            File file = new File(Environment.getExternalStorageDirectory() + "/DCIM/"+food.getName()+".jpg");
 //
 //            if (file.exists()) {
 //                // Tệp ảnh tồn tại
-             viewHolder.btnDele.setVisibility(View.VISIBLE);
+            viewHolder.btnDele.setVisibility(View.VISIBLE);
             viewHolder.btnDele.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     myDatabaseHelper.QueryData("DELETE FROM Food WHERE name = '"+food.getName()+"' AND calo = "+food.getCalo());
                     notifyDataSetChanged(); // Cập nhật ListView
                     Toast.makeText(context, "Delete successfully!", Toast.LENGTH_LONG).show();
+                    mainActivity.onActivityRecreate();
+
                 }
             });
-                viewHolder.itemImage.setImageResource(R.drawable.baseline_food_bank_24);
+            viewHolder.itemImage.setImageResource(R.drawable.baseline_food_bank_24);
 //            } else {
 //
 //            }

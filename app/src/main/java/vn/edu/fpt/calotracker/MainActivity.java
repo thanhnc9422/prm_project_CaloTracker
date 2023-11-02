@@ -42,6 +42,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private static final int CAMERA_REQUEST_CODE = 22;
     private static final int WRITE_EXTERNAL_STORAGE_CODE = 1;
+    private MyFragmentCallback myFragmentCallback;
     private MyDatabaseHelper myDatabaseHelper;
     private ListView listViewFoods;
     private ArrayList<Food> arrayList;
@@ -51,10 +52,13 @@ public class MainActivity extends AppCompatActivity {
     private TextView editTextCalories;
     private Button buttonAddImg;
     private Button buttonAddFood;
-    private ImageView showImg;
-    private Bitmap imageBitmap;
-    private OutputStream outputStream;
+//    private ImageView showImg;
+//    private Bitmap imageBitmap;
+//    private OutputStream outputStream;
 
+    public void onActivityRecreate() {
+    recreate();
+}
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,11 +66,11 @@ public class MainActivity extends AppCompatActivity {
         listViewFoods = findViewById(R.id.listViewFoods);
         editTextFoodName = findViewById(R.id.editTextFoodName);
         editTextCalories = findViewById(R.id.editTextCalories);
-        showImg = findViewById(R.id.showImg);
-        buttonAddImg = findViewById(R.id.buttonAddImg);
+//        showImg = findViewById(R.id.showImg);
+//        buttonAddImg = findViewById(R.id.buttonAddImg);
         buttonAddFood = findViewById(R.id.buttonAddFood);
         arrayList = new ArrayList<>();
-        foodAdapter = new FoodAdapter(this, R.layout.item_listview, arrayList);
+        foodAdapter = new FoodAdapter(this, R.layout.item_listview, arrayList, this);
         listViewFoods.setAdapter(foodAdapter);
 
 
@@ -88,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         buttonAddFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myDatabaseHelper.QueryData("INSERT INTO Food VALUES (NULL , 'add_"+editTextCalories.getText()+"', "+Float.parseFloat(editTextCalories.getText().toString())+")");
+                myDatabaseHelper.QueryData("INSERT INTO Food VALUES (NULL , 'add_"+editTextFoodName.getText()+"', "+Float.parseFloat(editTextCalories.getText().toString())+")");
                 recreate();
 //                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
 //                    if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
@@ -140,6 +144,8 @@ public class MainActivity extends AppCompatActivity {
 //
 //                        FragmentManager fragmentManager = getSupportFragmentManager();
 //                        fragmentManager.beginTransaction().replace(R.id.fragment_container, new TrackerFragment()).commit();
+//                        trackerFragment.recreateFragment();
+
                     }
 
                 });
